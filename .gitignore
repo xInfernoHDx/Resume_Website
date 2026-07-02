@@ -1,6 +1,9 @@
 # Source resume documents — only the exported PDF in assets/resume/ deploys
 *.docx
 
+# Local Claude Code config/skills — don't commit or deploy to Hostinger
+.claude/
+
 # Local scratch
 *.log
 Thumbs.db
