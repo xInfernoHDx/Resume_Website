@@ -1,0 +1,7 @@
+# Source resume documents — only the exported PDF in assets/resume/ deploys
+*.docx
+
+# Local scratch
+*.log
+Thumbs.db
+.DS_Store
