@@ -17,7 +17,7 @@
             <span class="site-nav-brand-name">Jacob Dolph</span>
         </a>
 
-        <nav class="site-nav-links" aria-label="Primary">
+        <nav class="site-nav-links" id="siteNavLinks" aria-label="Primary">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#experience">Experience</a>
@@ -25,6 +25,8 @@
             <a href="#contact">Contact</a>
             <a class="btn btn--outline btn--sm" href="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/resume/Jacob-Dolph-Resume.pdf' ); ?>" download>Download Resume</a>
         </nav>
+
+        <button class="site-nav-dock-toggle" id="navDockToggle" aria-expanded="false" aria-controls="siteNavLinks" aria-label="Open navigation">JD</button>
 
         <button class="site-nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
             <span class="site-nav-toggle-bar" aria-hidden="true"></span>

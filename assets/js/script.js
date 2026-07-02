@@ -99,15 +99,61 @@
   })();
 
   /* ----------------------------------------------------------------------
-   * 4. Nav scroll shadow
+   * 4. Nav scroll shadow + dock
+   * Past the hero the pill docks into a compact "JD" button on the left
+   * (desktop only — the CSS gates docked styles behind min-width: 721px).
+   * Clicking it re-expands the bar; scrolling on, clicking a link, or
+   * Escape re-docks it. Back at the top the full bar always returns.
    * -------------------------------------------------------------------- */
-  (function navShadow() {
+  (function navDock() {
     var nav = document.getElementById('siteNav');
     if (!nav) return;
 
+    var dockToggle = document.getElementById('navDockToggle');
+    var DOCK_AT = 160;      // px scrolled before the bar docks
+    var REDOCK_AFTER = 120; // px scrolled away from an expanded bar before it re-docks
+    var expanded = false;
+    var expandY = 0;
+
     function update() {
-      nav.classList.toggle('is-scrolled', window.scrollY > 8);
+      var y = window.scrollY;
+      nav.classList.toggle('is-scrolled', y > 8);
+
+      if (y <= DOCK_AT || (expanded && Math.abs(y - expandY) > REDOCK_AFTER)) {
+        expanded = false;
+      }
+
+      nav.classList.toggle('is-docked', y > DOCK_AT && !expanded);
+      if (dockToggle) {
+        dockToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      }
     }
+
+    if (dockToggle) {
+      dockToggle.addEventListener('click', function () {
+        expanded = true;
+        expandY = window.scrollY;
+        update();
+        var firstLink = nav.querySelector('.site-nav-links a');
+        if (firstLink) firstLink.focus();
+      });
+    }
+
+    nav.querySelectorAll('.site-nav-links a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        expanded = false;
+        update();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && expanded) {
+        expanded = false;
+        update();
+        if (dockToggle) dockToggle.focus();
+      }
+    });
+
     update();
     window.addEventListener('scroll', update, { passive: true });
   })();

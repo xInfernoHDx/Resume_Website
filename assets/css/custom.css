@@ -232,7 +232,9 @@ img, svg {
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  transition: box-shadow var(--dur-fast) var(--ease),
+  overflow: hidden;
+  transition: width var(--dur) var(--ease),
+              box-shadow var(--dur-fast) var(--ease),
               background var(--dur-fast) var(--ease);
 }
 
@@ -293,6 +295,53 @@ img, svg {
 
 .site-nav-links > a:not(.btn):hover {
   color: var(--accent-400);
+}
+
+/* Dock toggle — the compact "JD" button the pill collapses into on scroll.
+   Hidden until the nav is docked (desktop only). */
+.site-nav-dock-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-full);
+  background: var(--navy-800);
+  border: 1px solid var(--navy-700);
+  color: var(--accent-400);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease),
+              color var(--dur-fast) var(--ease);
+}
+
+.site-nav-dock-toggle:hover {
+  border-color: var(--accent-400);
+  color: var(--white);
+}
+
+@media (min-width: 721px) {
+  .site-nav.is-docked {
+    left: 0.75rem;
+    margin-inline: 0;
+    width: 56px;
+  }
+
+  .site-nav.is-docked .site-nav-inner {
+    padding-inline: 0;
+    justify-content: center;
+  }
+
+  .site-nav.is-docked .site-nav-brand,
+  .site-nav.is-docked .site-nav-links {
+    display: none;
+  }
+
+  .site-nav.is-docked .site-nav-dock-toggle {
+    display: inline-flex;
+  }
 }
 
 .site-nav-toggle {
@@ -856,7 +905,8 @@ img, svg {
   }
 
   .btn,
-  .project-card {
+  .project-card,
+  .site-nav {
     transition: none;
   }
 
