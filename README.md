@@ -1,4 +1,4 @@
-# jdolph-resume-theme
+# Resume_Website
 
 Custom WordPress theme for Jacob Dolph's resume website. The **repo root is the theme root** — Hostinger's Git deployment copies the repo root directly into the target directory.
 

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jacob Dolph — Resume</title>
+<style>
+  @page {
+    size: Letter;
+    margin: 0.55in 0.65in;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+    font-size: 9.7pt;
+    line-height: 1.42;
+    color: #334155;
+  }
+
+  .mono { font-family: Consolas, 'Courier New', monospace; }
+
+  /* ---------- Header ---------- */
+  header {
+    border-bottom: 2.5px solid #0891b2;
+    padding-bottom: 8pt;
+    margin-bottom: 10pt;
+  }
+  h1 {
+    font-size: 21pt;
+    font-weight: 700;
+    color: #0b1f3a;
+    letter-spacing: -0.01em;
+  }
+  .headline {
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: #0e7490;
+    margin: 2pt 0 4pt;
+  }
+  .contact-line {
+    font-size: 8.8pt;
+    color: #64748b;
+  }
+  .contact-line span + span::before {
+    content: '  |  ';
+    color: #cbd5e1;
+  }
+
+  /* ---------- Sections ---------- */
+  h2 {
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #0b1f3a;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 2pt;
+    margin: 11pt 0 6pt;
+  }
+
+  p.summary { text-align: justify; }
+
+  /* ---------- Skills ---------- */
+  .skills td {
+    vertical-align: top;
+    padding: 1.5pt 0;
+  }
+  .skills td:first-child {
+    font-weight: 600;
+    color: #0b1f3a;
+    white-space: nowrap;
+    padding-right: 10pt;
+    width: 1%;
+  }
+  table { border-collapse: collapse; width: 100%; }
+
+  /* ---------- Experience ---------- */
+  .role { margin-bottom: 8pt; }
+  .role-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .role-title {
+    font-size: 10.3pt;
+    font-weight: 700;
+    color: #0b1f3a;
+  }
+  .role-title .co {
+    font-weight: 600;
+    color: #0e7490;
+  }
+  .role-dates {
+    font-size: 8.6pt;
+    color: #64748b;
+    white-space: nowrap;
+  }
+  ul { margin: 2.5pt 0 0 13pt; }
+  li { margin-bottom: 1.8pt; }
+
+  /* ---------- Tools ---------- */
+  .tools {
+    font-size: 8.9pt;
+    color: #475569;
+    line-height: 1.55;
+  }
+
+  .edu-line strong { color: #0b1f3a; }
+
+  .avoid-break { page-break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Jacob Dolph</h1>
+  <p class="headline">Endpoint Engineer &nbsp;|&nbsp; Infrastructure Operations &nbsp;|&nbsp; Tier-3 Windows Support</p>
+  <p class="contact-line">
+    <span>Chicago Suburbs, IL</span><span>jdolph2@gmail.com</span><span>linkedin.com/in/jacob-dolph-373658171</span>
+  </p>
+</header>
+
+<h2>Professional Summary</h2>
+<p class="summary">Endpoint Engineer with progressive IT experience across enterprise support, senior technical escalation, and endpoint engineering. Strong background supporting Windows 10/11 environments, endpoint lifecycle management, Ivanti EPM/Neurons, Workspace ONE UEM, application packaging, imaging, patching, driver/BIOS updates, and Tier-3 troubleshooting. Practical, operations-focused engineer known for root-cause analysis, clear documentation, vendor coordination, and translating repeat support issues into scalable endpoint standards and deployment processes.</p>
+
+<h2>Core Technical Skills</h2>
+<table class="skills">
+  <tr><td>Endpoint Management</td><td>Ivanti EPM, Ivanti Neurons, Workspace ONE UEM / Omnissa, MobileIron, Android Enterprise, Samsung Knox OEMConfig</td></tr>
+  <tr><td>Windows Engineering</td><td>Windows 10/11, feature upgrades, Group Policy, registry, OMA-URI, Windows Update remediation, Event Viewer/log analysis</td></tr>
+  <tr><td>Deployment &amp; Imaging</td><td>PXE, WinPE, WIM imaging, driver injection, HII, Surface/Lenovo/Dell hardware support, BIOS/firmware deployment</td></tr>
+  <tr><td>Automation &amp; Packaging</td><td>PowerShell, silent installs, MSI/EXE/MSIX deployment, detection logic, winget, Office Deployment Tool, Dell Command Update CLI</td></tr>
+  <tr><td>Identity, Network &amp; Security</td><td>Active Directory, Entra ID/Azure AD troubleshooting, Okta SSO, certificates, Cisco AnyConnect, GlobalProtect migration support</td></tr>
+</table>
+
+<h2>Professional Experience</h2>
+
+<div class="role avoid-break">
+  <div class="role-head">
+    <p class="role-title">Endpoint Engineer <span class="co">&mdash; Lawson Products, Chicago/O&rsquo;Hare Area</span></p>
+    <p class="role-dates">April 2025 &ndash; Present</p>
+  </div>
+  <ul>
+    <li>Engineer and support enterprise endpoint solutions for Windows 11 devices, Android tablets, Surface, Lenovo, and Dell hardware across production support and deployment workflows.</li>
+    <li>Administer Ivanti EPM, Ivanti Neurons, Workspace ONE UEM / Omnissa, and legacy MobileIron for device configuration, app deployment, compliance, and troubleshooting.</li>
+    <li>Build, test, and troubleshoot MSI, EXE, MSIX, PowerShell, winget, Office Deployment Tool, and Dell Command Update deployments with platform-specific detection and compliance logic.</li>
+    <li>Support Windows 11 readiness and feature upgrade initiatives, including driver compatibility, BIOS/firmware updates, device policy validation, user impact analysis, and remediation planning.</li>
+    <li>Resolve complex endpoint issues involving Windows Update failures, application install errors, certificates, VPN connectivity, Okta SSO behavior, cellular/WWAN issues, and driver conflicts.</li>
+    <li>Create deployment notes, support scripts, technical documentation, and operational procedures for help desk, service delivery, and engineering teams.</li>
+  </ul>
+</div>
+
+<div class="role avoid-break">
+  <div class="role-head">
+    <p class="role-title">Senior Technical Support <span class="co">&mdash; Lawson Products</span></p>
+    <p class="role-dates">April 2024 &ndash; April 2025</p>
+  </div>
+  <ul>
+    <li>Served as an advanced escalation point for endpoint, application, device, and user-impacting incidents in a business-critical support environment.</li>
+    <li>Supported Windows desktop troubleshooting, device setup, hardware replacement, application repair, VPN troubleshooting, Microsoft 365/Exchange issues, Active Directory tasks, and device lifecycle workflows.</li>
+    <li>Partnered with engineering resources to diagnose recurring issues and transition repeat fixes into standardized scripts, documentation, policy changes, or deployment improvements.</li>
+  </ul>
+</div>
+
+<div class="role avoid-break">
+  <div class="role-head">
+    <p class="role-title">Technical Support <span class="co">&mdash; Lawson Products</span></p>
+    <p class="role-dates">April 2022 &ndash; April 2024</p>
+  </div>
+  <ul>
+    <li>Provided frontline and escalated IT support for enterprise users, endpoints, applications, account access, hardware, printers, mobile devices, and remote connectivity.</li>
+    <li>Built strong operational knowledge across service desk workflows, ticket documentation, incident prioritization, end-user communication, and cross-team escalation, leading to promotion into Senior Technical Support.</li>
+  </ul>
+</div>
+
+<div class="role avoid-break">
+  <div class="role-head">
+    <p class="role-title">IT Support Specialist <span class="co">&mdash; Heniff Transportation Systems, LLC</span></p>
+    <p class="role-dates">July 2020 &ndash; April 2022</p>
+  </div>
+  <ul>
+    <li>Supported end-user technology needs in a full-time IT support role, troubleshooting hardware, software, account access, connectivity, and endpoint issues.</li>
+  </ul>
+</div>
+
+<h2>Selected Engineering Projects &amp; Technical Highlights</h2>
+<ul>
+  <li><strong>Windows 11 endpoint enablement:</strong> supported transition and management planning for Windows 11 sales laptops while maintaining Android tablet management in Workspace ONE UEM.</li>
+  <li><strong>Ivanti application deployment:</strong> packaged and troubleshot enterprise applications, shortcuts, drivers, and runtime dependencies through Ivanti Neurons/EPM, including download/cache failures and compliance states.</li>
+  <li><strong>Imaging and driver support:</strong> supported PXE/WinPE imaging, Surface/Lenovo/Dell driver injection, storage/NIC driver troubleshooting, HII failure analysis, and boot media workflows.</li>
+  <li><strong>Connectivity and identity troubleshooting:</strong> investigated Okta SSO, embedded browser behavior, Cisco AnyConnect certificate/routing failures, GlobalProtect migration scenarios, and cellular-only authentication issues.</li>
+</ul>
+
+<h2>Tools &amp; Platforms</h2>
+<p class="tools">Ivanti EPM &nbsp;|&nbsp; Ivanti Neurons &nbsp;|&nbsp; Workspace ONE UEM / Omnissa &nbsp;|&nbsp; MobileIron &nbsp;|&nbsp; Microsoft 365 Admin &nbsp;|&nbsp; Exchange &nbsp;|&nbsp; Active Directory &nbsp;|&nbsp; Entra ID / Azure AD &nbsp;|&nbsp; Group Policy &nbsp;|&nbsp; PowerShell &nbsp;|&nbsp; Windows Event Viewer &nbsp;|&nbsp; DISM &nbsp;|&nbsp; WinPE &nbsp;|&nbsp; PXE &nbsp;|&nbsp; WIM &nbsp;|&nbsp; Dell Command Update &nbsp;|&nbsp; Lenovo / Surface driver packs &nbsp;|&nbsp; Samsung Knox Service Plugin &nbsp;|&nbsp; Okta &nbsp;|&nbsp; Cisco AnyConnect &nbsp;|&nbsp; GlobalProtect</p>
+
+<h2>Education</h2>
+<p class="edu-line"><strong>Bachelor&rsquo;s Degree in Information Systems &amp; Technology</strong>, Specialization in Security &mdash; Southern Illinois University Carbondale</p>
+
+</body>
+</html>
