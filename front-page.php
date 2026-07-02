@@ -15,21 +15,15 @@ get_header();
     <section class="hero" id="top">
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="container hero-inner">
-            <p class="eyebrow">Endpoint Engineer &middot; Infrastructure Operations</p>
+            <p class="eyebrow">Endpoint Engineer &middot; Chicago Suburbs, IL</p>
             <h1 class="hero-title">Jacob Dolph</h1>
             <p class="hero-sub">
-                I keep enterprise Windows fleets healthy &mdash; engineering endpoint management,
-                application packaging, imaging, and patching across Windows 10/11 with
-                Ivanti EPM/Neurons and Workspace ONE UEM, backed by Tier-3 troubleshooting depth.
-            </p>
-            <p class="hero-location">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
-                Chicago Suburbs, IL
+                I keep enterprise Windows fleets healthy: endpoint management, packaging,
+                imaging, and patching with Ivanti EPM/Neurons and Workspace ONE UEM.
             </p>
             <div class="hero-ctas">
                 <a class="btn btn--primary" href="<?php echo esc_url( $resume_pdf ); ?>" download>Download Resume</a>
                 <a class="btn btn--ghost" href="<?php echo esc_url( $linkedin ); ?>" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a class="hero-contact-link" href="#contact">Get in touch <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -37,7 +31,6 @@ get_header();
     <!-- ================= About ================= -->
     <section class="section section--white" id="about">
         <div class="container">
-            <p class="eyebrow eyebrow--dark reveal">About</p>
             <h2 class="section-title reveal">Practical, operations-focused engineering</h2>
             <div class="about-grid">
                 <p class="about-text reveal">
@@ -61,8 +54,7 @@ get_header();
     <!-- ================= Skills ================= -->
     <section class="section section--tint" id="skills">
         <div class="container">
-            <p class="eyebrow eyebrow--dark reveal">Core Technical Skills</p>
-            <h2 class="section-title reveal">What I work with</h2>
+            <h2 class="section-title reveal">Core technical skills</h2>
             <div class="skills-grid">
 
                 <article class="skill-card reveal">
@@ -126,8 +118,7 @@ get_header();
     <!-- ================= Experience ================= -->
     <section class="section section--white" id="experience">
         <div class="container">
-            <p class="eyebrow eyebrow--dark reveal">Professional Experience</p>
-            <h2 class="section-title reveal">Where I&rsquo;ve been</h2>
+            <h2 class="section-title reveal">Professional experience</h2>
 
             <div class="timeline">
 
@@ -135,14 +126,14 @@ get_header();
                 <div class="timeline-company reveal">
                     <div class="timeline-company-head">
                         <h3 class="timeline-company-name">Lawson Products</h3>
-                        <p class="timeline-company-meta">Chicago / O&rsquo;Hare Area &middot; 2022 &ndash; Present</p>
+                        <p class="timeline-company-meta">Chicago / O&rsquo;Hare Area &middot; 2022 - Present</p>
                     </div>
 
                     <div class="timeline-role">
                         <span class="timeline-dot" aria-hidden="true"></span>
                         <div class="timeline-role-body">
                             <h4 class="timeline-role-title">Endpoint Engineer</h4>
-                            <p class="timeline-role-dates">April 2025 &ndash; Present</p>
+                            <p class="timeline-role-dates">April 2025 - Present</p>
                             <ul role="list">
                                 <li>Engineer and support enterprise endpoint solutions for Windows 11 devices, Android tablets, Surface, Lenovo, and Dell hardware across production support and deployment workflows.</li>
                                 <li>Administer Ivanti EPM, Ivanti Neurons, Workspace ONE UEM / Omnissa, and legacy MobileIron for device configuration, app deployment, compliance, and troubleshooting.</li>
@@ -158,7 +149,7 @@ get_header();
                         <span class="timeline-dot" aria-hidden="true"></span>
                         <div class="timeline-role-body">
                             <h4 class="timeline-role-title">Senior Technical Support</h4>
-                            <p class="timeline-role-dates">April 2024 &ndash; April 2025</p>
+                            <p class="timeline-role-dates">April 2024 - April 2025</p>
                             <ul role="list">
                                 <li>Served as an advanced escalation point for endpoint, application, device, and user-impacting incidents in a business-critical support environment.</li>
                                 <li>Supported Windows desktop troubleshooting, device setup, hardware replacement, application repair, VPN troubleshooting, Microsoft 365/Exchange issues, Active Directory tasks, and device lifecycle workflows.</li>
@@ -171,7 +162,7 @@ get_header();
                         <span class="timeline-dot" aria-hidden="true"></span>
                         <div class="timeline-role-body">
                             <h4 class="timeline-role-title">Technical Support</h4>
-                            <p class="timeline-role-dates">April 2022 &ndash; April 2024</p>
+                            <p class="timeline-role-dates">April 2022 - April 2024</p>
                             <ul role="list">
                                 <li>Provided frontline and escalated IT support for enterprise users, endpoints, applications, account access, hardware, printers, mobile devices, and remote connectivity.</li>
                                 <li>Built strong operational knowledge across service desk workflows, ticket documentation, incident prioritization, end-user communication, and cross-team escalation, leading to promotion into Senior Technical Support.</li>
@@ -184,14 +175,14 @@ get_header();
                 <div class="timeline-company reveal">
                     <div class="timeline-company-head">
                         <h3 class="timeline-company-name">Heniff Transportation Systems, LLC</h3>
-                        <p class="timeline-company-meta">2020 &ndash; 2022</p>
+                        <p class="timeline-company-meta">2020 - 2022</p>
                     </div>
 
                     <div class="timeline-role">
                         <span class="timeline-dot" aria-hidden="true"></span>
                         <div class="timeline-role-body">
                             <h4 class="timeline-role-title">IT Support Specialist</h4>
-                            <p class="timeline-role-dates">July 2020 &ndash; April 2022</p>
+                            <p class="timeline-role-dates">July 2020 - April 2022</p>
                             <ul role="list">
                                 <li>Supported end-user technology needs in a full-time IT support role, troubleshooting hardware, software, account access, connectivity, and endpoint issues.</li>
                             </ul>
@@ -206,8 +197,7 @@ get_header();
     <!-- ================= Projects ================= -->
     <section class="section section--tint" id="projects">
         <div class="container">
-            <p class="eyebrow eyebrow--dark reveal">Selected Engineering Projects</p>
-            <h2 class="section-title reveal">Technical highlights</h2>
+            <h2 class="section-title reveal">Selected engineering work</h2>
             <div class="projects-grid">
 
                 <article class="project-card reveal">
@@ -249,8 +239,7 @@ get_header();
     <!-- ================= Tools ================= -->
     <section class="section section--white" id="tools">
         <div class="container">
-            <p class="eyebrow eyebrow--dark reveal">Tools &amp; Platforms</p>
-            <h2 class="section-title reveal">Daily drivers</h2>
+            <h2 class="section-title reveal">Tools &amp; platforms</h2>
             <ul class="tool-cloud reveal" role="list">
                 <?php
                 $jdolph_tools = array(
@@ -271,7 +260,7 @@ get_header();
     <!-- ================= Education ================= -->
     <section class="section section--tint section--compact" id="education">
         <div class="container">
-            <p class="eyebrow eyebrow--dark reveal">Education</p>
+            <h2 class="section-title section-title--sm reveal">Education</h2>
             <div class="edu-card reveal">
                 <svg class="edu-icon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
                 <div>
@@ -285,7 +274,6 @@ get_header();
     <!-- ================= Contact ================= -->
     <section class="contact" id="contact">
         <div class="container contact-inner">
-            <p class="eyebrow reveal">Contact</p>
             <h2 class="contact-title reveal">Let&rsquo;s talk endpoints.</h2>
             <p class="contact-sub reveal">
                 Open to conversations about endpoint engineering, UEM/MDM, and Windows infrastructure roles.

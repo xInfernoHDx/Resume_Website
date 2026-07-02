@@ -23,7 +23,7 @@
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
-            <a class="btn btn--outline btn--sm" href="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/resume/Jacob-Dolph-Resume.pdf' ); ?>" download>Resume</a>
+            <a class="btn btn--outline btn--sm" href="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/resume/Jacob-Dolph-Resume.pdf' ); ?>" download>Download Resume</a>
         </nav>
 
         <button class="site-nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">

@@ -18,6 +18,7 @@
   --slate-700: #334155;
   --slate-500: #64748b;
   --slate-300: #cbd5e1;
+  --slate-200: #e2e8f0;
   --slate-100: #f1f5f9;
   --slate-50:  #f8fafc;
   --white:     #ffffff;
@@ -29,7 +30,7 @@
 
   /* Typography */
   --font-heading: 'Space Grotesk', 'Segoe UI', sans-serif;
-  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-body: 'Geist', 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', Consolas, monospace;
 
   /* Spacing scale */
@@ -41,23 +42,24 @@
   --sp-6: 2rem;
   --sp-8: 3rem;
   --sp-10: 4rem;
-  --sp-12: 5rem;
+  --sp-12: 6rem;
   --sp-16: 7rem;
 
   /* Layout */
   --max-w: 1100px;
   --pad: clamp(1.25rem, 4vw, 2rem);
 
-  /* Radius */
+  /* Radius — one system: interactive elements (buttons, chips, tags) are
+     full pills; containers (cards) are 16px; small accents 6px. */
   --r-sm: 6px;
   --r-md: 10px;
   --r-lg: 16px;
   --r-full: 999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
-  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.1);
-  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.16);
+  /* Shadows — soft, diffused, tinted to the slate hue. */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 6px 20px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 2px 4px rgba(15, 23, 42, 0.04), 0 14px 36px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 4px 8px rgba(15, 23, 42, 0.05), 0 24px 56px rgba(15, 23, 42, 0.12);
 
   /* Motion */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -76,7 +78,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 72px; /* keep anchored sections clear of the sticky nav */
+  scroll-padding-top: 88px; /* keep anchored sections clear of the floating nav */
 }
 
 body {
@@ -144,17 +146,21 @@ img, svg {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-2);
-  padding: 0.7rem 1.4rem;
+  padding: 0.7rem 1.6rem;
   font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 600;
-  border-radius: var(--r-md);
+  border-radius: var(--r-full);
   border: 1px solid transparent;
   cursor: pointer;
   transition: transform var(--dur-fast) var(--ease),
               box-shadow var(--dur-fast) var(--ease),
               background var(--dur-fast) var(--ease),
               color var(--dur-fast) var(--ease);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .btn--primary {
@@ -208,33 +214,36 @@ img, svg {
   margin-bottom: var(--sp-3);
 }
 
-.eyebrow--dark {
-  color: var(--accent-600);
-}
-
 /* --------------------------------------------------------------------------
    Sticky nav
    -------------------------------------------------------------------------- */
+/* Floating glass pill, detached from the viewport edge. */
 .site-nav {
   position: fixed;
-  top: 0;
+  top: 0.75rem;
   left: 0;
   right: 0;
+  margin-inline: auto;
+  width: min(calc(100% - 1.5rem), var(--max-w));
   z-index: 100;
-  background: rgba(11, 31, 58, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: box-shadow var(--dur-fast) var(--ease);
+  background: rgba(11, 31, 58, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: var(--r-full);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: box-shadow var(--dur-fast) var(--ease),
+              background var(--dur-fast) var(--ease);
 }
 
 .site-nav.is-scrolled {
-  box-shadow: 0 2px 20px rgba(8, 17, 32, 0.5);
+  background: rgba(11, 31, 58, 0.88);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06),
+              0 12px 32px rgba(8, 17, 32, 0.45);
 }
 
 .site-nav-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0.85rem var(--pad);
+  padding: 0.65rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -254,7 +263,7 @@ img, svg {
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: var(--r-sm);
+  border-radius: var(--r-full);
   background: var(--navy-800);
   border: 1px solid var(--navy-700);
   color: var(--accent-400);
@@ -403,16 +412,6 @@ img, svg {
   max-width: 640px;
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
   color: var(--slate-300);
-  margin-bottom: var(--sp-4);
-}
-
-.hero-location {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--slate-500);
   margin-bottom: var(--sp-6);
 }
 
@@ -421,16 +420,6 @@ img, svg {
   flex-wrap: wrap;
   align-items: center;
   gap: var(--sp-4);
-}
-
-.hero-contact-link {
-  color: var(--slate-300);
-  font-weight: 500;
-  transition: color var(--dur-fast) var(--ease);
-}
-
-.hero-contact-link:hover {
-  color: var(--accent-400);
 }
 
 /* --------------------------------------------------------------------------
@@ -457,6 +446,11 @@ img, svg {
   font-weight: 600;
   letter-spacing: -0.01em;
   margin-bottom: var(--sp-8);
+}
+
+.section-title--sm {
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  margin-bottom: var(--sp-5);
 }
 
 /* --------------------------------------------------------------------------
@@ -495,33 +489,29 @@ img, svg {
 /* --------------------------------------------------------------------------
    Skills
    -------------------------------------------------------------------------- */
+/* Flat groups instead of boxed cards: an accent top rule carries the
+   hierarchy. Asymmetric 3 + 2 rhythm on desktop (5 groups, 6 tracks). */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-5);
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--sp-8) var(--sp-6);
 }
 
 .skill-card {
-  background: var(--white);
-  border: 1px solid var(--slate-300);
-  border-radius: var(--r-lg);
-  padding: var(--sp-5);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--dur-fast) var(--ease),
-              box-shadow var(--dur-fast) var(--ease);
+  grid-column: span 2;
+  padding-top: var(--sp-4);
+  border-top: 2px solid var(--accent-500);
 }
 
-.skill-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+.skill-card:nth-child(4),
+.skill-card:nth-child(5) {
+  grid-column: span 3;
 }
 
 .skill-card-title {
   font-size: 1.05rem;
   font-weight: 600;
-  padding-bottom: var(--sp-3);
   margin-bottom: var(--sp-3);
-  border-bottom: 2px solid var(--accent-500);
 }
 
 .skill-card ul {
@@ -660,7 +650,7 @@ img, svg {
   display: flex;
   flex-direction: column;
   background: var(--white);
-  border: 1px solid var(--slate-300);
+  border: 1px solid var(--slate-200);
   border-radius: var(--r-lg);
   padding: var(--sp-5);
   box-shadow: var(--shadow-sm);
@@ -737,7 +727,7 @@ img, svg {
   align-items: center;
   gap: var(--sp-5);
   background: var(--white);
-  border: 1px solid var(--slate-300);
+  border: 1px solid var(--slate-200);
   border-radius: var(--r-lg);
   padding: var(--sp-5);
   box-shadow: var(--shadow-sm);
@@ -866,13 +856,12 @@ img, svg {
   }
 
   .btn,
-  .skill-card,
   .project-card {
     transition: none;
   }
 
   .btn:hover,
-  .skill-card:hover,
+  .btn:active,
   .project-card:hover {
     transform: none;
   }
@@ -884,6 +873,15 @@ img, svg {
 @media (max-width: 900px) {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skill-card,
+  .skill-card:nth-child(4) {
+    grid-column: auto;
+  }
+
+  .skill-card:nth-child(5) {
+    grid-column: 1 / -1;
   }
 
   .about-grid {

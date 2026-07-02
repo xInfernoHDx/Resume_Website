@@ -19,7 +19,7 @@ function jdolph_resume_enqueue_assets() {
     // Google Fonts — one combined request.
     wp_enqueue_style(
         'jdolph-fonts',
-        'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap',
+        'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap',
         array(),
         null
     );
@@ -51,7 +51,7 @@ add_action( 'wp_enqueue_scripts', 'jdolph_resume_enqueue_assets' );
  * ---------------------------------------------------------------------- */
 function jdolph_resume_document_title( $title ) {
     if ( is_front_page() ) {
-        return 'Jacob Dolph — Endpoint Engineer | Windows Endpoint Management';
+        return 'Jacob Dolph - Endpoint Engineer | Windows Endpoint Management';
     }
     return $title;
 }
@@ -69,7 +69,7 @@ function jdolph_resume_head_meta() {
         return;
     }
 
-    $description = 'Jacob Dolph — Endpoint Engineer in the Chicago suburbs specializing in Windows 10/11 endpoint management, Ivanti EPM/Neurons, Workspace ONE UEM, application packaging, imaging, and patching.';
+    $description = 'Jacob Dolph, Endpoint Engineer in the Chicago suburbs specializing in Windows 10/11 endpoint management, Ivanti EPM/Neurons, Workspace ONE UEM, application packaging, imaging, and patching.';
     $og_image    = get_stylesheet_directory_uri() . '/assets/images/og-card.png';
     $home        = home_url( '/' );
 
@@ -77,7 +77,7 @@ function jdolph_resume_head_meta() {
 
     // Open Graph / Twitter card.
     printf( '<meta property="og:type" content="profile">' . "\n" );
-    printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( 'Jacob Dolph — Endpoint Engineer' ) );
+    printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( 'Jacob Dolph - Endpoint Engineer' ) );
     printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $description ) );
     printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $home ) );
     printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $og_image ) );
