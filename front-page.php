@@ -232,6 +232,22 @@ get_header();
                     </ul>
                 </article>
 
+                <article class="project-card reveal">
+                    <h3 class="project-card-title">Workspace ONE UEM Lab</h3>
+                    <p>Stood up a standalone Workspace ONE UEM instance for Windows 11 device management, resolving enrollment, profile, and policy issues end-to-end with AI-assisted troubleshooting.</p>
+                    <ul class="project-tags" role="list">
+                        <li>Independent</li><li>Workspace ONE UEM</li><li>Windows 11</li>
+                    </ul>
+                </article>
+
+                <article class="project-card reveal">
+                    <h3 class="project-card-title">AI-Assisted Website Launches</h3>
+                    <p>Built and launched two production websites, including this one: Git-based deployment to managed hosting, DNS cutover, and cache troubleshooting, directing Claude through the implementation.</p>
+                    <ul class="project-tags" role="list">
+                        <li>Independent</li><li>Claude Code</li><li>Git / DNS / Hosting</li>
+                    </ul>
+                </article>
+
             </div>
         </div>
     </section>
@@ -248,6 +264,7 @@ get_header();
                     'Group Policy', 'PowerShell', 'Windows Event Viewer', 'DISM', 'WinPE', 'PXE',
                     'WIM', 'Dell Command Update', 'Lenovo / Surface driver packs',
                     'Samsung Knox Service Plugin', 'Okta', 'Cisco AnyConnect', 'GlobalProtect',
+                    'Claude Code',
                 );
                 foreach ( $jdolph_tools as $jdolph_tool ) {
                     printf( '<li class="tool-chip">%s</li>', esc_html( $jdolph_tool ) );

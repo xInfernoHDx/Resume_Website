@@ -108,6 +108,7 @@ function jdolph_resume_head_meta() {
             'Group Policy',
             'Active Directory',
             'Entra ID',
+            'AI-Assisted Engineering (Claude Code)',
         ),
     );
     printf(
