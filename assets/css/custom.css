@@ -342,6 +342,52 @@ img, svg {
   .site-nav.is-docked .site-nav-dock-toggle {
     display: inline-flex;
   }
+
+  /* Menu open: the links drop down below the docked button instead of
+     the bar expanding back to the middle. */
+  .site-nav.is-docked.is-menu-open {
+    overflow: visible;
+  }
+
+  .site-nav.is-docked.is-menu-open .site-nav-links {
+    display: flex;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--sp-1);
+    min-width: 230px;
+    padding: var(--sp-3);
+    background: rgba(11, 31, 58, 0.92);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: var(--r-lg);
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    box-shadow: 0 24px 56px rgba(8, 17, 32, 0.5);
+    animation: nav-drop-in 200ms var(--ease);
+  }
+
+  .site-nav.is-docked.is-menu-open .site-nav-links > a:not(.btn) {
+    padding: 0.45rem 0.75rem;
+    border-radius: var(--r-sm);
+  }
+
+  .site-nav.is-docked.is-menu-open .site-nav-links > a:not(.btn):hover {
+    background: rgba(148, 163, 184, 0.12);
+  }
+
+  .site-nav.is-docked.is-menu-open .site-nav-links > .btn {
+    margin-top: var(--sp-2);
+    justify-content: center;
+  }
+}
+
+@keyframes nav-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
 }
 
 .site-nav-toggle {
@@ -908,6 +954,10 @@ img, svg {
   .project-card,
   .site-nav {
     transition: none;
+  }
+
+  .site-nav .site-nav-links {
+    animation: none;
   }
 
   .btn:hover,

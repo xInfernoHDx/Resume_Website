@@ -102,8 +102,9 @@
    * 4. Nav scroll shadow + dock
    * Past the hero the pill docks into a compact "JD" button on the left
    * (desktop only — the CSS gates docked styles behind min-width: 721px).
-   * Clicking it re-expands the bar; scrolling on, clicking a link, or
-   * Escape re-docks it. Back at the top the full bar always returns.
+   * Clicking it drops the links down below the button; scrolling on,
+   * clicking a link, clicking outside, or Escape closes the menu. Back
+   * at the top the full bar always returns.
    * -------------------------------------------------------------------- */
   (function navDock() {
     var nav = document.getElementById('siteNav');
@@ -111,45 +112,54 @@
 
     var dockToggle = document.getElementById('navDockToggle');
     var DOCK_AT = 160;      // px scrolled before the bar docks
-    var REDOCK_AFTER = 120; // px scrolled away from an expanded bar before it re-docks
-    var expanded = false;
-    var expandY = 0;
+    var CLOSE_AFTER = 120;  // px scrolled away from an open menu before it closes
+    var menuOpen = false;
+    var openY = 0;
 
     function update() {
       var y = window.scrollY;
       nav.classList.toggle('is-scrolled', y > 8);
 
-      if (y <= DOCK_AT || (expanded && Math.abs(y - expandY) > REDOCK_AFTER)) {
-        expanded = false;
+      if (y <= DOCK_AT || (menuOpen && Math.abs(y - openY) > CLOSE_AFTER)) {
+        menuOpen = false;
       }
 
-      nav.classList.toggle('is-docked', y > DOCK_AT && !expanded);
+      nav.classList.toggle('is-docked', y > DOCK_AT);
+      nav.classList.toggle('is-menu-open', menuOpen);
       if (dockToggle) {
-        dockToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        dockToggle.setAttribute('aria-expanded', menuOpen ? 'true' : 'false');
       }
+    }
+
+    function closeMenu() {
+      if (!menuOpen) return;
+      menuOpen = false;
+      update();
     }
 
     if (dockToggle) {
       dockToggle.addEventListener('click', function () {
-        expanded = true;
-        expandY = window.scrollY;
+        menuOpen = !menuOpen;
+        openY = window.scrollY;
         update();
-        var firstLink = nav.querySelector('.site-nav-links a');
-        if (firstLink) firstLink.focus();
+        if (menuOpen) {
+          var firstLink = nav.querySelector('.site-nav-links a');
+          if (firstLink) firstLink.focus();
+        }
       });
     }
 
     nav.querySelectorAll('.site-nav-links a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        expanded = false;
-        update();
-      });
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (menuOpen && !nav.contains(e.target)) closeMenu();
     });
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && expanded) {
-        expanded = false;
-        update();
+      if (e.key === 'Escape' && menuOpen) {
+        closeMenu();
         if (dockToggle) dockToggle.focus();
       }
     });
