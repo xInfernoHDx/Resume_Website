@@ -3,10 +3,9 @@
  * Template Name: Resume
  *
  * Standalone resume page — all resume sections, moved from the former
- * front page. Auto-selected for the WP Page with slug "resume"; the
- * Template Name header allows manual assignment as a fallback.
- * Note: this template renders fixed markup and ignores the Page editor
- * content.
+ * front page. Served at /resume/ via a code-registered rewrite rule in
+ * functions.php (no WP Page required). The Template Name header also
+ * allows manual assignment to a real Page as a fallback.
  */
 
 $resume_pdf = get_stylesheet_directory_uri() . '/assets/resume/Jacob-Dolph-Resume.pdf';

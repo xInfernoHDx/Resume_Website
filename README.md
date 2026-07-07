@@ -7,13 +7,9 @@ Custom WordPress theme for **dolphsystems.com**: an AI solutions homepage for Do
 1. Push to `main` → Hostinger auto-deploys to `public_html/wp-content/themes/jdolph-resume`.
 2. **After every deploy, purge LiteSpeed Cache** (WP Admin top bar → LiteSpeed icon → Purge All). The Git deploy updates files on disk but never invalidates the rendered-HTML cache.
 
-## One-time WP Admin setup (required for /resume/)
+## How /resume/ works (no WP admin setup)
 
-The resume page template only renders once a matching WP Page exists:
-
-1. WP Admin → Pages → Add New. Title: **Resume**, slug: **resume**. Publish.
-2. Settings → Permalinks must be **Post name** (`/resume/` breaks under Plain permalinks).
-3. The template (`page-resume.php`) auto-selects by slug and renders fixed markup — **content typed into the Page editor is ignored**. If the slug ever changes, assign the "Resume" template manually on the Page.
+`/resume/` is a **code-registered route**, not a WP Page: `functions.php` adds a rewrite rule (`^resume/?$`) and a `template_include` filter that serves `page-resume.php`. Rewrite rules are flushed automatically once per version bump of `jdolph_route_version` in `functions.php` — bump it whenever a route is added or changed. No database row, no Page, no permalink settings needed.
 
 ## Structure
 

@@ -13,6 +13,49 @@ function jdolph_resume_setup() {
 add_action( 'after_setup_theme', 'jdolph_resume_setup' );
 
 /* -------------------------------------------------------------------------
+ * Resume route — /resume/ is a code-registered rewrite, not a WP Page.
+ * No admin setup or database row required.
+ * ---------------------------------------------------------------------- */
+function jdolph_resume_register_routes() {
+    add_rewrite_rule( '^resume/?$', 'index.php?jdolph_view=resume', 'top' );
+}
+add_action( 'init', 'jdolph_resume_register_routes' );
+
+function jdolph_resume_query_vars( $vars ) {
+    $vars[] = 'jdolph_view';
+    return $vars;
+}
+add_filter( 'query_vars', 'jdolph_resume_query_vars' );
+
+// True on the /resume/ route (and on a real "resume" Page, if one ever exists).
+function jdolph_is_resume_view() {
+    return get_query_var( 'jdolph_view' ) === 'resume' || is_page( 'resume' );
+}
+
+function jdolph_resume_template_include( $template ) {
+    if ( get_query_var( 'jdolph_view' ) === 'resume' ) {
+        $custom = get_stylesheet_directory() . '/page-resume.php';
+        if ( file_exists( $custom ) ) {
+            status_header( 200 );
+            return $custom;
+        }
+    }
+    return $template;
+}
+add_filter( 'template_include', 'jdolph_resume_template_include' );
+
+// Flush rewrite rules exactly once per route-version bump — never on every load.
+function jdolph_resume_maybe_flush_rewrites() {
+    $current = '2.0.1';
+    if ( get_option( 'jdolph_route_version' ) !== $current ) {
+        jdolph_resume_register_routes();
+        flush_rewrite_rules( false );
+        update_option( 'jdolph_route_version', $current );
+    }
+}
+add_action( 'init', 'jdolph_resume_maybe_flush_rewrites', 20 );
+
+/* -------------------------------------------------------------------------
  * Assets
  * ---------------------------------------------------------------------- */
 function jdolph_resume_enqueue_assets() {
@@ -53,7 +96,7 @@ function jdolph_resume_document_title( $title ) {
     if ( is_front_page() ) {
         return 'Dolph Systems - AI Solutions & Engineering | Jacob Dolph';
     }
-    if ( is_page( 'resume' ) ) {
+    if ( jdolph_is_resume_view() ) {
         return 'Jacob Dolph - Endpoint Engineer Resume | Dolph Systems';
     }
     return $title;
@@ -68,7 +111,7 @@ function jdolph_resume_head_meta() {
     $favicon = get_stylesheet_directory_uri() . '/assets/images/favicon.svg';
     printf( '<link rel="icon" type="image/svg+xml" href="%s">' . "\n", esc_url( $favicon ) );
 
-    if ( ! is_front_page() && ! is_page( 'resume' ) ) {
+    if ( ! is_front_page() && ! jdolph_is_resume_view() ) {
         return;
     }
 
@@ -136,7 +179,7 @@ function jdolph_resume_head_meta() {
         );
     } else {
         $description = 'Jacob Dolph, Endpoint Engineer in the Chicago suburbs specializing in Windows 10/11 endpoint management, Ivanti EPM/Neurons, Workspace ONE UEM, application packaging, imaging, and patching.';
-        $page_url    = get_permalink();
+        $page_url    = home_url( '/resume/' ); // The route is virtual — no permalink exists.
 
         printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );
 

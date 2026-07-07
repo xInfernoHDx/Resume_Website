@@ -13,7 +13,7 @@
 <?php
 // One nav definition rendered in both the desktop pill and the mobile
 // drawer so the two lists can never drift apart.
-if ( is_page( 'resume' ) ) {
+if ( jdolph_is_resume_view() ) {
     $jdolph_nav_links = array(
         array( 'label' => 'Home', 'href' => home_url( '/' ) ),
         array( 'label' => 'About', 'href' => '#about' ),
