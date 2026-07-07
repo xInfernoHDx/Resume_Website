@@ -1026,3 +1026,274 @@ img, svg {
     padding: var(--sp-10) 0;
   }
 }
+
+/* ==========================================================================
+   Homepage (Dolph Systems) — additive section, v2.0.0.
+   Everything above is shared with the resume page and stays untouched.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Home hero — bolder display type, deeper glow, same navy system
+   -------------------------------------------------------------------------- */
+.hero--home {
+  padding: calc(72px + var(--sp-16)) 0 var(--sp-16);
+}
+
+.hero-bg--home {
+  background-image:
+    radial-gradient(ellipse 700px 480px at 80% 20%, rgba(34, 211, 238, 0.14), transparent 70%),
+    radial-gradient(ellipse 520px 420px at 12% 85%, rgba(8, 145, 178, 0.1), transparent 70%),
+    repeating-linear-gradient(0deg, rgba(148, 163, 184, 0.05) 0, rgba(148, 163, 184, 0.05) 1px, transparent 1px, transparent 48px),
+    repeating-linear-gradient(90deg, rgba(148, 163, 184, 0.05) 0, rgba(148, 163, 184, 0.05) 1px, transparent 1px, transparent 48px);
+}
+
+.hero-title--display {
+  font-size: clamp(2.6rem, 6vw, 4.25rem);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  max-width: 18ch;
+}
+
+.hero-title-accent {
+  color: var(--accent-400);
+}
+
+.hero-sub--home {
+  max-width: 600px;
+}
+
+/* --------------------------------------------------------------------------
+   Proof strip — dark band closing out the hero bookend
+   -------------------------------------------------------------------------- */
+.home-proof {
+  background: var(--navy-950);
+  border-top: 1px solid rgba(148, 163, 184, 0.14);
+  padding: var(--sp-5) 0;
+}
+
+.home-proof-inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4) var(--sp-6);
+}
+
+.home-proof-item {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--slate-300);
+  text-align: center;
+}
+
+.home-proof-item + .home-proof-item {
+  border-left: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+/* --------------------------------------------------------------------------
+   Capabilities — asymmetric 5/4 card rhythm
+   -------------------------------------------------------------------------- */
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: var(--sp-5);
+}
+
+.capability-card {
+  grid-column: span 4;
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-fast) var(--ease),
+              box-shadow var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease);
+}
+
+.capability-card:nth-child(1),
+.capability-card:nth-child(4) {
+  grid-column: span 5;
+}
+
+.capability-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-500);
+  box-shadow: var(--shadow-md);
+}
+
+.capability-card::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  border-radius: var(--r-full);
+  background: var(--accent-500);
+  margin-bottom: var(--sp-4);
+}
+
+.capability-card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: var(--sp-3);
+}
+
+.capability-card p {
+  font-size: 0.97rem;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Real work — full-width stacked rows
+   -------------------------------------------------------------------------- */
+.work-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.work-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-left: 3px solid var(--accent-500);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6) var(--sp-8);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-fast) var(--ease),
+              box-shadow var(--dur-fast) var(--ease);
+}
+
+.work-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.work-card-meta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-600);
+  margin-bottom: var(--sp-2);
+}
+
+.work-card-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: var(--sp-3);
+}
+
+.work-card-body p:not(.work-card-meta) {
+  max-width: 68ch;
+  margin-bottom: var(--sp-4);
+}
+
+/* --------------------------------------------------------------------------
+   Resume teaser — dark card on the tint section
+   -------------------------------------------------------------------------- */
+.resume-teaser {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-5);
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);
+  border: 1px solid var(--navy-700);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6) var(--sp-8);
+  box-shadow: var(--shadow-md);
+}
+
+.resume-teaser-title {
+  color: var(--white);
+  font-size: 1.4rem;
+  margin-bottom: var(--sp-2);
+}
+
+.resume-teaser-copy p {
+  color: var(--slate-300);
+  margin: 0;
+}
+
+.resume-teaser-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+}
+
+/* --------------------------------------------------------------------------
+   Outline button for light backgrounds (teaser fallback, index.php)
+   -------------------------------------------------------------------------- */
+.btn--outline-dark {
+  background: transparent;
+  color: var(--accent-600);
+  border-color: var(--accent-600);
+}
+
+.btn--outline-dark:hover {
+  background: rgba(8, 145, 178, 0.1);
+  transform: translateY(-2px);
+}
+
+.fallback-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-4);
+}
+
+/* --------------------------------------------------------------------------
+   Homepage responsive + reduced motion
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .capability-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .capability-card,
+  .capability-card:nth-child(1),
+  .capability-card:nth-child(4) {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .capability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-proof-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .home-proof-item {
+    text-align: left;
+  }
+
+  .home-proof-item + .home-proof-item {
+    border-left: none;
+    border-top: 1px solid rgba(148, 163, 184, 0.18);
+    padding-top: var(--sp-4);
+  }
+
+  .work-card {
+    padding: var(--sp-5);
+  }
+
+  .resume-teaser {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--sp-6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capability-card,
+  .work-card,
+  .btn--outline-dark {
+    transition: none;
+  }
+
+  .capability-card:hover,
+  .work-card:hover,
+  .btn--outline-dark:hover {
+    transform: none;
+  }
+}

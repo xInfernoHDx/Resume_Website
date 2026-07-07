@@ -51,7 +51,10 @@ add_action( 'wp_enqueue_scripts', 'jdolph_resume_enqueue_assets' );
  * ---------------------------------------------------------------------- */
 function jdolph_resume_document_title( $title ) {
     if ( is_front_page() ) {
-        return 'Jacob Dolph - Endpoint Engineer | Windows Endpoint Management';
+        return 'Dolph Systems - AI Solutions & Engineering | Jacob Dolph';
+    }
+    if ( is_page( 'resume' ) ) {
+        return 'Jacob Dolph - Endpoint Engineer Resume | Dolph Systems';
     }
     return $title;
 }
@@ -65,27 +68,15 @@ function jdolph_resume_head_meta() {
     $favicon = get_stylesheet_directory_uri() . '/assets/images/favicon.svg';
     printf( '<link rel="icon" type="image/svg+xml" href="%s">' . "\n", esc_url( $favicon ) );
 
-    if ( ! is_front_page() ) {
+    if ( ! is_front_page() && ! is_page( 'resume' ) ) {
         return;
     }
 
-    $description = 'Jacob Dolph, Endpoint Engineer in the Chicago suburbs specializing in Windows 10/11 endpoint management, Ivanti EPM/Neurons, Workspace ONE UEM, application packaging, imaging, and patching.';
-    $og_image    = get_stylesheet_directory_uri() . '/assets/images/og-card.png';
-    $home        = home_url( '/' );
+    $og_image = get_stylesheet_directory_uri() . '/assets/images/og-card.png';
+    $home     = home_url( '/' );
 
-    printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );
-
-    // Open Graph / Twitter card.
-    printf( '<meta property="og:type" content="profile">' . "\n" );
-    printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( 'Jacob Dolph - Endpoint Engineer' ) );
-    printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $description ) );
-    printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $home ) );
-    printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $og_image ) );
-    printf( '<meta name="twitter:card" content="summary_large_image">' . "\n" );
-
-    // JSON-LD Person schema — no email, no telephone.
-    $schema = array(
-        '@context'   => 'https://schema.org',
+    // Shared Person schema — no email, no telephone.
+    $person = array(
         '@type'      => 'Person',
         'name'       => 'Jacob Dolph',
         'jobTitle'   => 'Endpoint Engineer',
@@ -109,8 +100,57 @@ function jdolph_resume_head_meta() {
             'Active Directory',
             'Entra ID',
             'AI-Assisted Engineering (Claude Code)',
+            'AI Agent Direction',
+            'Prompt-Driven Automation',
         ),
     );
+
+    if ( is_front_page() ) {
+        $description = 'Dolph Systems, the AI solutions practice of Jacob Dolph: AI-directed development, AI-assisted operations, and automation built on enterprise endpoint engineering experience.';
+
+        printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );
+
+        // Open Graph / Twitter card.
+        printf( '<meta property="og:type" content="website">' . "\n" );
+        printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( 'Dolph Systems - AI Solutions & Engineering' ) );
+        printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $description ) );
+        printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $home ) );
+        printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $og_image ) );
+        printf( '<meta name="twitter:card" content="summary_large_image">' . "\n" );
+
+        // JSON-LD: the practice plus the person behind it.
+        $person['@id'] = $home . '#jacob-dolph';
+        $schema        = array(
+            '@context' => 'https://schema.org',
+            '@graph'   => array(
+                array(
+                    '@type'       => 'ProfessionalService',
+                    'name'        => 'Dolph Systems',
+                    'url'         => $home,
+                    'description' => $description,
+                    'founder'     => array( '@id' => $home . '#jacob-dolph' ),
+                    'areaServed'  => 'United States',
+                ),
+                $person,
+            ),
+        );
+    } else {
+        $description = 'Jacob Dolph, Endpoint Engineer in the Chicago suburbs specializing in Windows 10/11 endpoint management, Ivanti EPM/Neurons, Workspace ONE UEM, application packaging, imaging, and patching.';
+        $page_url    = get_permalink();
+
+        printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );
+
+        // Open Graph / Twitter card.
+        printf( '<meta property="og:type" content="profile">' . "\n" );
+        printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( 'Jacob Dolph - Endpoint Engineer' ) );
+        printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $description ) );
+        printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $page_url ) );
+        printf( '<meta property="og:image" content="%s">' . "\n", esc_url( $og_image ) );
+        printf( '<meta name="twitter:card" content="summary_large_image">' . "\n" );
+
+        $schema = array_merge( array( '@context' => 'https://schema.org' ), $person );
+    }
+
     printf(
         '<script type="application/ld+json">%s</script>' . "\n",
         wp_json_encode( $schema, JSON_UNESCAPED_SLASHES )
