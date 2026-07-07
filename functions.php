@@ -93,11 +93,13 @@ add_action( 'wp_enqueue_scripts', 'jdolph_resume_enqueue_assets' );
  * Document title
  * ---------------------------------------------------------------------- */
 function jdolph_resume_document_title( $title ) {
-    if ( is_front_page() ) {
-        return 'Dolph Systems - AI Solutions & Engineering | Jacob Dolph';
-    }
+    // The /resume/ rewrite leaves the main query looking like the home
+    // query, so is_front_page() is true there — check the route first.
     if ( jdolph_is_resume_view() ) {
         return 'Jacob Dolph - Endpoint Engineer Resume | Dolph Systems';
+    }
+    if ( is_front_page() ) {
+        return 'Dolph Systems - AI Solutions & Engineering | Jacob Dolph';
     }
     return $title;
 }
@@ -148,7 +150,9 @@ function jdolph_resume_head_meta() {
         ),
     );
 
-    if ( is_front_page() ) {
+    // Route check first: is_front_page() is also true on the /resume/
+    // rewrite (the main query resembles the home query there).
+    if ( is_front_page() && ! jdolph_is_resume_view() ) {
         $description = 'Dolph Systems, the AI solutions practice of Jacob Dolph: AI-directed development, AI-assisted operations, and automation built on enterprise endpoint engineering experience.';
 
         printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );
